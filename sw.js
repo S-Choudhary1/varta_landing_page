@@ -1,51 +1,32 @@
-// Service Worker for PWA functionality
-const CACHE_NAME = 'pictoolz-exif-v1';
-const urlsToCache = [
-    '/',
-    '/index.html',
-    '/style.css',
-    '/exif.js',
-    '/strip.js',
-    '/ads.js',
-    '/assets/favicon.png',
-    'https://cdn.jsdelivr.net/npm/exif-js@2.3.0/exif.min.js'
+const CACHE_NAME = "varta-ai-site-v1";
+const FILES_TO_CACHE = [
+  "/",
+  "/index.html",
+  "/style.css",
+  "/main.js",
+  "/privacy/",
+  "/contact/",
+  "/pricing/",
+  "/terms/",
+  "/platform/"
 ];
 
-// Install event - cache resources
-self.addEventListener('install', (event) => {
-    event.waitUntil(
-        caches.open(CACHE_NAME)
-            .then((cache) => {
-                console.log('Opened cache');
-                return cache.addAll(urlsToCache);
-            })
-    );
+self.addEventListener("install", (event) => {
+  event.waitUntil(
+    caches.open(CACHE_NAME).then((cache) => cache.addAll(FILES_TO_CACHE))
+  );
 });
 
-// Fetch event - serve from cache when offline
-self.addEventListener('fetch', (event) => {
-    event.respondWith(
-        caches.match(event.request)
-            .then((response) => {
-                // Return cached version or fetch from network
-                return response || fetch(event.request);
-            }
-        )
-    );
+self.addEventListener("activate", (event) => {
+  event.waitUntil(
+    caches.keys().then((keys) =>
+      Promise.all(keys.filter((k) => k !== CACHE_NAME).map((k) => caches.delete(k)))
+    )
+  );
 });
 
-// Activate event - clean up old caches
-self.addEventListener('activate', (event) => {
-    event.waitUntil(
-        caches.keys().then((cacheNames) => {
-            return Promise.all(
-                cacheNames.map((cacheName) => {
-                    if (cacheName !== CACHE_NAME) {
-                        console.log('Deleting old cache:', cacheName);
-                        return caches.delete(cacheName);
-                    }
-                })
-            );
-        })
-    );
+self.addEventListener("fetch", (event) => {
+  event.respondWith(
+    caches.match(event.request).then((cached) => cached || fetch(event.request))
+  );
 });

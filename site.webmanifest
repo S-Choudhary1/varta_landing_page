@@ -1,26 +1,23 @@
 {
-    "name": "EXIF Viewer Online & Remover Tool - Pictoolz.com",
-    "short_name": "EXIF Tool",
-    "description": "Free online tool to view and remove EXIF metadata from images. Strip GPS data, camera info, and other metadata from photos while maintaining privacy.",
-    "start_url": "/",
-    "display": "standalone",
-    "background_color": "#ffffff",
-    "theme_color": "#667eea",
-    "orientation": "portrait-primary",
-    "icons": [
-        {
-            "src": "assets/favicon.png",
-            "sizes": "192x192",
-            "type": "image/png"
-        },
-        {
-            "src": "assets/favicon.png",
-            "sizes": "512x512",
-            "type": "image/png"
-        }
-    ],
-    "categories": ["utilities", "photo", "privacy"],
-    "lang": "en",
-    "scope": "/",
-    "url": "https://pictoolz.com"
-} 
+  "name": "Varta AI - WhatsApp Business CRM",
+  "short_name": "Varta AI",
+  "description": "Varta AI helps teams manage customer conversations, automation, and campaigns on WhatsApp.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#0d1321",
+  "theme_color": "#25d366",
+  "lang": "en",
+  "icons": [
+    {
+      "src": "assets/favicon.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/favicon.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
